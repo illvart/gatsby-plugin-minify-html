@@ -1,7 +1,7 @@
 # gatsby-plugin-minify-html
 
 [![Travis](https://img.shields.io/travis/com/illvart/gatsby-plugin-minify-html?branch=master&logo=travis)](https://travis-ci.com/illvart/gatsby-plugin-minify-html)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ff26dcaf8924512a58c766c13e2568c)](https://www.codacy.com/app/illvart/gatsby-plugin-minify-html?utm_source=github.com&utm_medium=referral&utm_content=illvart/gatsby-plugin-minify-html&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c611bb3c90e442029970dc28fb469ea3)](https://www.codacy.com/manual/illvart/gatsby-plugin-minify-html?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=illvart/gatsby-plugin-minify-html&amp;utm_campaign=Badge_Grade)
 [![NPM version](https://img.shields.io/npm/v/gatsby-plugin-minify-html)](https://www.npmjs.org/package/gatsby-plugin-minify-html)
 [![Downloads](https://img.shields.io/npm/dt/gatsby-plugin-minify-html)](https://www.npmjs.com/package/gatsby-plugin-minify-html)
 [![Issues](https://img.shields.io/github/issues-raw/illvart/gatsby-plugin-minify-html)](https://github.com/illvart/gatsby-plugin-minify-html)
@@ -25,11 +25,15 @@ _NOTE: This plugin only generates output when run in `production` mode! To test 
 
 With yarn:
 
-`yarn add gatsby-plugin-minify-html html-minifier`
+```sh
+yarn add gatsby-plugin-minify-html html-minifier
+```
 
 Or with npm:
 
-`npm install --save gatsby-plugin-minify-html html-minifier`
+```sh
+npm install --save gatsby-plugin-minify-html html-minifier
+```
 
 ## How to Use
 
@@ -77,7 +81,7 @@ The options of `html-minifier` are enabled default by this plugin:
 |  `removeScriptTypeAttributes`   | `Boolean` | `true`  |  Remove `type="text/javascript"` from `script` tags. Other `type` attribute values are left intact   |
 | `removeStyleLinkTypeAttributes` | `Boolean` | `true`  | Remove `type="text/css"` from `style` and `link` tags. Other `type` attribute values are left intact |
 
-See all options at https://github.com/kangax/html-minifier#options-quick-reference.
+See all options `html-minifier` at [Options Quick Reference](https://github.com/kangax/html-minifier#options-quick-reference).
 
 ### Example
 
