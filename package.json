@@ -1,0 +1,48 @@
+{
+  "name": "gatsby-plugin-minify-html",
+  "description": "A Gatsby plugin for minify HTML files",
+  "version": "0.0.1",
+  "author": "Muhammad Nur Fuad <illvart.com@gmail.com> (https://illvart.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/illvart/gatsby-plugin-minify-html#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illvart/gatsby-plugin-minify-html.git"
+  },
+  "bugs": {
+    "url": "https://github.com/illvart/gatsby-plugin-minify-html/issues"
+  },
+  "main": "index.js",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "html",
+    "htmlmin",
+    "min",
+    "minifier",
+    "minify",
+    "minification",
+    "html-minifer",
+    "compress",
+    "compressor",
+    "optimize",
+    "optimizer"
+  ],
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "glob": "^7.1.6"
+  },
+  "peerDependencies": {
+    "html-minifier": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "format": "prettier --write \"./src/**/*.js\"",
+    "lint": "eslint \"./src/**/*.js\""
+  }
+}
