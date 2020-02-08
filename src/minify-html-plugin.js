@@ -1,9 +1,13 @@
 'use strict';
 
 const fs = require('fs');
+const util = require('util');
 const glob = require('glob');
-const merge = require('deepmerge');
 const htmlMinifier = require('html-minifier');
+const { isObject, isBoolean, deepMerge } = require('./utils');
+
+const globAsync = util.promisify(glob);
+const readFileAsync = util.promisify(fs.readFile);
 
 // Default html-minifer
 // https://github.com/kangax/html-minifier#options-quick-reference
@@ -19,47 +23,49 @@ const defaultOptions = {
   }
 };
 
-function onPostBuild(args, pluginOptions = {}) {
-  const options = merge(defaultOptions, pluginOptions);
+async function onPostBuild(args, pluginOptions = {}) {
+  if (pluginOptions) {
+    if (pluginOptions.debug && !isBoolean(pluginOptions.debug)) {
+      throw new Error('Minify HTML error, at plugin options `debug` value not type boolean false or true.');
+    }
+    if (pluginOptions.config && !isObject(pluginOptions.config)) {
+      throw new Error('Minify HTML error, at plugin options `config` value not type object.');
+    }
+  }
+  const options = deepMerge(defaultOptions, pluginOptions);
 
-  return new Promise((resolve, reject) => {
-    const pattern = 'public/**/*.html';
-    glob(pattern, { nodir: true }, (globError, inputFiles) => {
-      if (globError) {
-        console.log('Minify HTML error at param `globError`', globError);
-        reject();
-      } else {
-        const minifyStart = `Minify HTML files at public directory, total HTML files ${inputFiles.length}`;
-        console.log(options.debug ? `${minifyStart}:` : `${minifyStart}.`);
+  const pattern = 'public/**/*.html';
+  const files = await globAsync(pattern, { nodir: true });
 
-        inputFiles.map(file => {
-          fs.readFile(file, 'utf8', (readError, data) => {
-            if (readError) {
-              console.log('Minify HTML error at param `readError`', readError);
-              reject();
-            }
+  const minifyStart = new Date().getTime();
+  const minifyTotal = `Minify HTML files at public directory, total HTML files ${files.length}`;
+  console.info(options.debug ? `${minifyTotal}:` : `${minifyTotal}.`);
 
-            let minify;
-            try {
-              minify = htmlMinifier.minify(data, options.config);
-            } catch (minifyError) {
-              console.log(`Error during run a html-minifier at file ${file}\n${minifyError}`);
-            }
-            const reducedPercentage = (((data.length - minify.length) / data.length) * 100).toFixed(2);
-
-            fs.writeFile(file, minify, writeError => {
-              if (writeError) {
-                console.log('Minify HTML error at param `writeError`', writeError);
-                reject();
-              }
-              options.debug ? console.log(file, `> reduced ${reducedPercentage}%.`) : '';
-              resolve();
-            });
-          });
-        });
+  const minified = files.map(async file => {
+    const data = await readFileAsync(file, 'utf8');
+    return new Promise((resolve, reject) => {
+      let minify;
+      try {
+        minify = htmlMinifier.minify(String(data), options.config);
+      } catch (err) {
+        throw new Error(`Error during run a html-minifier at file ${file}:\n${err}`);
       }
+      const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
+
+      fs.writeFile(file, minify, err => {
+        if (err) {
+          reject();
+          throw new Error(`Minify HTML error on write file:\n${err}`);
+        }
+        options.debug ? console.debug(file, `> reduced ${reduced}%.`) : '';
+        resolve();
+      });
     });
   });
+  await Promise.all(minified);
+
+  const minifyEnd = new Date().getTime();
+  console.info(`Minify HTML files done in ${(minifyEnd - minifyStart) / 1000} sec`);
 }
 
 exports.onPostBuild = onPostBuild;

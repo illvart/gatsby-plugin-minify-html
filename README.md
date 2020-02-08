@@ -1,6 +1,6 @@
 # gatsby-plugin-minify-html
 
-[![Travis](https://img.shields.io/travis/com/illvart/gatsby-plugin-minify-html?branch=master&logo=travis)](https://travis-ci.com/illvart/gatsby-plugin-minify-html)
+[![Travis](https://img.shields.io/travis/com/illvart/gatsby-plugin-minify-html?branch=master)](https://travis-ci.com/illvart/gatsby-plugin-minify-html)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c611bb3c90e442029970dc28fb469ea3)](https://www.codacy.com/manual/illvart/gatsby-plugin-minify-html?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=illvart/gatsby-plugin-minify-html&amp;utm_campaign=Badge_Grade)
 [![NPM version](https://img.shields.io/npm/v/gatsby-plugin-minify-html)](https://www.npmjs.org/package/gatsby-plugin-minify-html)
 [![Downloads](https://img.shields.io/npm/dt/gatsby-plugin-minify-html)](https://www.npmjs.com/package/gatsby-plugin-minify-html)
@@ -13,31 +13,32 @@ With this plugin, you can minify each HTML files (`.html`) at `public` directory
 
 _NOTE: This plugin only generates output when run in `production` mode! To test your minify HTML, run: `gatsby build && gatsby serve`._
 
-- [Install](#install)
-- [How to Use](#how-to-use)
-- [Options](#options)
-  - [Example](#example)
-- [Maintainers](#maintainers)
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Options](#options)
+    - [Example](#example)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Install
+## Installation
 
-With yarn:
-
-```sh
-yarn add gatsby-plugin-minify-html html-minifier
-```
-
-Or with npm:
+Install with yarn:
 
 ```sh
-npm install --save gatsby-plugin-minify-html html-minifier
+yarn add gatsby-plugin-minify-html
 ```
 
-## How to Use
+Or install with npm:
 
-Just add the plugin to the `plugins` array in your `gatsby-config.js` file:
+```sh
+npm install --save gatsby-plugin-minify-html
+```
+
+## Usage
+
+After installing `gatsby-plugin-minify-html` you can add it to the `plugins` array in your `gatsby-config.js` file:
 
 ```js
 module.exports = {
@@ -66,7 +67,7 @@ module.exports = {
 };
 ```
 
-## Options
+### Options
 
 This plugin uses [`html-minifier`](https://github.com/kangax/html-minifier), to use `html-minifier` options put the options at `config: { }`.
 
@@ -83,7 +84,7 @@ The options of `html-minifier` are enabled default by this plugin:
 
 See all options `html-minifier` at [Options Quick Reference](https://github.com/kangax/html-minifier#options-quick-reference).
 
-### Example
+#### Example
 
 `gatsby-config.js`
 
@@ -93,7 +94,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-minify-html',
       options: {
-        debug: true, // Debug optional, default false
+        debug: true, // debug optional, default false
         config: {
           // Enabled default by this plugin
           collapseWhitespace: false,
@@ -102,7 +103,7 @@ module.exports = {
           removeComments: false,
           removeScriptTypeAttributes: false,
           removeStyleLinkTypeAttributes: false,
-          // Disabled default by this plugin
+          // Disabled default by html-minifier
           sortAttributes: true,
           useShortDoctype: true
         }
@@ -121,12 +122,6 @@ public/index.html > reduced 0.19%.
 ...
 ```
 
-## Maintainers
-
-Muhammad Nur Fuad
-[![Github](https://img.shields.io/badge/-website?style=social&logoColor=333&logo=github)](https://github.com/illvart)
-[![Web](https://img.shields.io/badge/-website?style=social&logoColor=333&logo=nextdoor)](https://illvart.com)
-
 ## Contributing
 
 If you would like to help out with some code, check the [details](./docs/CONTRIBUTING.md).
@@ -134,7 +129,3 @@ If you would like to help out with some code, check the [details](./docs/CONTRIB
 ## License
 
 Licensed under [MIT](./LICENSE).
-
----
-
-© 2020 [Muhammad Nur Fuad (illvart)](https://github.com/illvart). All Rights Reserved.
