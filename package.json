@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-minify-html",
   "description": "A Gatsby plugin for minify HTML files",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Muhammad Nur Fuad <illvart.com@gmail.com> (https://illvart.com)",
   "license": "MIT",
   "homepage": "https://github.com/illvart/gatsby-plugin-minify-html#readme",
@@ -22,17 +22,13 @@
     "minifier",
     "minify",
     "minification",
-    "html-minifer",
     "compress",
     "compressor",
     "optimize",
     "optimizer"
   ],
   "dependencies": {
-    "deepmerge": "^4.2.2",
-    "glob": "^7.1.6"
-  },
-  "peerDependencies": {
+    "glob": "^7.1.6",
     "html-minifier": "^4.0.0"
   },
   "devDependencies": {
