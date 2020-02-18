@@ -3,13 +3,13 @@ module.exports = {
   plugins: ['prettier'],
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   rules: {
-    'prettier/prettier': 'error'
-  }
+    'prettier/prettier': 'error',
+  },
 };

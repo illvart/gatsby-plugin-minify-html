@@ -1,10 +1,8 @@
-'use strict';
-
 const fs = require('fs');
 const util = require('util');
 const glob = require('glob');
 const htmlMinifier = require('html-minifier');
-const { isObject, isBoolean, deepMerge } = require('./utils');
+const {isObject, isBoolean, deepMerge} = require('./utils');
 
 const globAsync = util.promisify(glob);
 const readFileAsync = util.promisify(fs.readFile);
@@ -19,8 +17,8 @@ const defaultOptions = {
     minifyJS: true,
     removeComments: true,
     removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true
-  }
+    removeStyleLinkTypeAttributes: true,
+  },
 };
 
 async function onPostBuild(args, pluginOptions = {}) {
@@ -35,7 +33,7 @@ async function onPostBuild(args, pluginOptions = {}) {
   const options = deepMerge(defaultOptions, pluginOptions);
 
   const pattern = 'public/**/*.html';
-  const files = await globAsync(pattern, { nodir: true });
+  const files = await globAsync(pattern, {nodir: true});
 
   const minifyStart = new Date().getTime();
   const minifyTotal = `Minify HTML files at public directory, total HTML files ${files.length}`;
@@ -48,14 +46,14 @@ async function onPostBuild(args, pluginOptions = {}) {
       try {
         minify = htmlMinifier.minify(String(data), options.config);
       } catch (err) {
-        throw new Error(`Error during run a html-minifier at file ${file}:\n${err}`);
+        console.warn(`Error during run a html-minifier at file ${file}:\n\n${err}`);
       }
       const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
 
       fs.writeFile(file, minify, err => {
         if (err) {
           reject();
-          throw new Error(`Minify HTML error on write file:\n${err}`);
+          console.error(`Minify HTML error on write file:\n\n${err}`);
         }
         options.debug ? console.debug(file, `> reduced ${reduced}%.`) : '';
         resolve();
