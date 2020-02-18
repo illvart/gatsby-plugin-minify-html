@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-minify-html",
   "description": "A Gatsby plugin for minify HTML files",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Muhammad Nur Fuad <illvart.com@gmail.com> (https://illvart.com)",
   "license": "MIT",
   "homepage": "https://github.com/illvart/gatsby-plugin-minify-html#readme",
