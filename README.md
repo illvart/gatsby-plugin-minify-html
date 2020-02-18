@@ -71,7 +71,7 @@ module.exports = {
 
 This plugin uses [`html-minifier`](https://github.com/kangax/html-minifier), to use `html-minifier` options put the options at `config: { }`.
 
-The options of `html-minifier` are enabled default by this plugin:
+You can see the options of `html-minifier` are enabled default by this plugin in the [minify-html-plugin.js](https://github.com/illvart/gatsby-plugin-minify-html/blob/dbbbc665748f4945913ec16c349333d6e7779e8e/src/minify-html-plugin.js#L10):
 
 |              Name               |   Type    | Default |                                             Description                                              |
 | :-----------------------------: | :-------: | :-----: | :--------------------------------------------------------------------------------------------------: |
@@ -124,8 +124,8 @@ public/index.html > reduced 0.19%.
 
 ## Contributing
 
-If you would like to help out with some code, check the [details](./docs/CONTRIBUTING.md).
+If you would like to help out with some code, check the [details](https://github.com/illvart/gatsby-plugin-minify-html/blob/master/docs/CONTRIBUTING.md).
 
 ## License
 
-Licensed under [MIT](./LICENSE).
+Licensed under [MIT](https://github.com/illvart/gatsby-plugin-minify-html/blob/master/LICENSE).
