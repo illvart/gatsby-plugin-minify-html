@@ -1,8 +1,13 @@
 {
   "name": "gatsby-plugin-minify-html",
-  "description": "A Gatsby plugin for minify HTML files",
   "version": "1.0.1",
-  "author": "Muhammad Nur Fuad <illvart.com@gmail.com> (https://illvart.com)",
+  "description": "A Gatsby plugin for minify HTML files",
+  "main": "index.js",
+  "author": {
+    "name": "illvart",
+    "email": "illvart@protonmail.com",
+    "url": "https://illvart.xyz"
+  },
   "license": "MIT",
   "homepage": "https://github.com/illvart/gatsby-plugin-minify-html#readme",
   "repository": {
@@ -12,7 +17,6 @@
   "bugs": {
     "url": "https://github.com/illvart/gatsby-plugin-minify-html/issues"
   },
-  "main": "index.js",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -27,24 +31,27 @@
     "optimize",
     "optimizer"
   ],
-  "dependencies": {
-    "glob": "^7.1.6",
-    "html-minifier": "^4.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+  "scripts": {
+    "format": "prettier --check \"./**/*.{js,json,yml}\" --write",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --ext .js --fix ."
   },
   "prettier": {
     "printWidth": 120,
     "singleQuote": true,
     "bracketSpacing": false,
-    "trailingComma": "es5"
+    "arrowParens": "always",
+    "trailingComma": "all",
+    "semi": true
   },
-  "scripts": {
-    "format": "prettier --check --write \"./**/*.js\"",
-    "lint": "eslint \"./**/*.js\""
+  "dependencies": {
+    "glob": "^7.1.6",
+    "html-minifier": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.1"
   }
 }
