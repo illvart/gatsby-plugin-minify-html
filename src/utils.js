@@ -1,8 +1,8 @@
-const isObject = val => val !== null && typeof val === 'object';
-const isBoolean = val => val === false || val === true;
+const isObject = (val) => val !== null && typeof val === 'object';
+const isBoolean = (val) => val === false || val === true;
 
 const deepMerge = (target = {}, source = {}) => {
-  Object.keys(source).forEach(key => {
+  Object.keys(source).forEach((key) => {
     if (isObject(source[key])) {
       if (!target[key] || !isObject(target[key])) {
         target[key] = source[key];

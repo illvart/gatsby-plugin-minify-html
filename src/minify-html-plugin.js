@@ -39,7 +39,7 @@ async function onPostBuild(args, pluginOptions = {}) {
   const minifyTotal = `Minify HTML files at public directory, total HTML files ${files.length}`;
   console.info(options.debug ? `${minifyTotal}:` : `${minifyTotal}.`);
 
-  const minified = files.map(async file => {
+  const minified = files.map(async (file) => {
     const data = await readFileAsync(file, 'utf8');
     return new Promise((resolve, reject) => {
       let minify;
@@ -50,7 +50,7 @@ async function onPostBuild(args, pluginOptions = {}) {
       }
       const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
 
-      fs.writeFile(file, minify, err => {
+      fs.writeFile(file, minify, (err) => {
         if (err) {
           reject();
           console.error(`Minify HTML error on write file:\n\n${err}`);
