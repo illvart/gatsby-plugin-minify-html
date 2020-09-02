@@ -69,9 +69,9 @@ module.exports = {
 
 ### Options
 
-This plugin uses [`html-minifier`](https://github.com/kangax/html-minifier), to use `html-minifier` options put the options at `config: { }`.
+This plugin uses [`html-minifier-terser`](https://github.com/terser/html-minifier-terser), to use `html-minifier-terser` options put the options at `config: { }`.
 
-You can see the options of `html-minifier` are enabled default by this plugin in the [minify-html-plugin.js](https://github.com/illvart/gatsby-plugin-minify-html/blob/dbbbc665748f4945913ec16c349333d6e7779e8e/src/minify-html-plugin.js#L10):
+You can see the options of `html-minifier-terser` are enabled default by this plugin in the [minify-html-plugin.js](https://github.com/illvart/gatsby-plugin-minify-html/blob/master/src/minify-html-plugin.js#L10):
 
 |              Name               |   Type    | Default |                                             Description                                              |
 | :-----------------------------: | :-------: | :-----: | :--------------------------------------------------------------------------------------------------: |
@@ -82,7 +82,7 @@ You can see the options of `html-minifier` are enabled default by this plugin in
 |  `removeScriptTypeAttributes`   | `Boolean` | `true`  |  Remove `type="text/javascript"` from `script` tags. Other `type` attribute values are left intact   |
 | `removeStyleLinkTypeAttributes` | `Boolean` | `true`  | Remove `type="text/css"` from `style` and `link` tags. Other `type` attribute values are left intact |
 
-See all options `html-minifier` at [Options Quick Reference](https://github.com/kangax/html-minifier#options-quick-reference).
+See all options `html-minifier-terser` at [Options Quick Reference](https://github.com/terser/html-minifier-terser#options-quick-reference).
 
 #### Example
 
@@ -103,7 +103,7 @@ module.exports = {
           removeComments: false,
           removeScriptTypeAttributes: false,
           removeStyleLinkTypeAttributes: false,
-          // Disabled default by html-minifier
+          // Disabled default by html-minifier-terser
           sortAttributes: true,
           useShortDoctype: true
         }
