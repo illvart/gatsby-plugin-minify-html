@@ -1,14 +1,14 @@
 const fs = require('fs');
 const util = require('util');
 const glob = require('glob');
-const htmlMinifier = require('html-minifier');
+const htmlMinifier = require('html-minifier-terser');
 const {isObject, isBoolean, deepMerge} = require('./utils');
 
 const globAsync = util.promisify(glob);
 const readFileAsync = util.promisify(fs.readFile);
 
-// Default html-minifer
-// https://github.com/kangax/html-minifier#options-quick-reference
+// Default html-minifer-terser
+// https://github.com/terser/html-minifier-terser#options-quick-reference
 const defaultOptions = {
   debug: false,
   config: {
@@ -46,7 +46,7 @@ async function onPostBuild(args, pluginOptions = {}) {
       try {
         minify = htmlMinifier.minify(String(data), options.config);
       } catch (err) {
-        console.warn(`Error during run a html-minifier at file ${file}:\n\n${err}`);
+        console.warn(`Error during run a html-minifier-terser at file ${file}:\n\n${err}`);
       }
       const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
 
