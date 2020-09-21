@@ -1,11 +1,9 @@
 # gatsby-plugin-minify-html
 
 [![Travis](https://img.shields.io/travis/com/illvart/gatsby-plugin-minify-html?branch=master)](https://travis-ci.com/illvart/gatsby-plugin-minify-html)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c611bb3c90e442029970dc28fb469ea3)](https://www.codacy.com/manual/illvart/gatsby-plugin-minify-html?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=illvart/gatsby-plugin-minify-html&amp;utm_campaign=Badge_Grade)
 [![NPM version](https://img.shields.io/npm/v/gatsby-plugin-minify-html)](https://www.npmjs.org/package/gatsby-plugin-minify-html)
 [![Downloads](https://img.shields.io/npm/dt/gatsby-plugin-minify-html)](https://www.npmjs.com/package/gatsby-plugin-minify-html)
 [![Issues](https://img.shields.io/github/issues-raw/illvart/gatsby-plugin-minify-html)](https://github.com/illvart/gatsby-plugin-minify-html)
-[![Twitter](https://img.shields.io/twitter/follow/illvart.svg?label=follow+illvart)](https://twitter.com/illvart)
 
 > A Gatsby plugin for **minify HTML** files.
 
