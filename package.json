@@ -1,12 +1,12 @@
 {
   "name": "gatsby-plugin-minify-html",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Gatsby plugin for minify HTML files",
   "main": "index.js",
   "author": {
     "name": "illvart",
     "email": "illvart@protonmail.com",
-    "url": "https://illvart.xyz"
+    "url": "https://twitter.com/illvart"
   },
   "license": "MIT",
   "homepage": "https://github.com/illvart/gatsby-plugin-minify-html#readme",
@@ -49,9 +49,9 @@
     "html-minifier-terser": "^5.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.8.1",
+    "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.2"
   }
 }
