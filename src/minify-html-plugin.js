@@ -41,25 +41,30 @@ async function onPostBuild(args, pluginOptions = {}) {
 
   const minified = files.map(async (file) => {
     const data = await readFileAsync(file, 'utf8');
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let minify;
       try {
         minify = htmlMinifier.minify(String(data), options.config);
+
+        const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
+
+        fs.writeFile(file, minify, (err) => {
+          if (err) {
+            console.warn(`Minify HTML error on write file:\n\n${err}`);
+            console.warn(`Leaving ${file} unchanged`);
+          } else {
+            options.debug ? console.debug(file, `> reduced ${reduced}%.`) : '';
+          }
+          resolve();
+        });
       } catch (err) {
         console.warn(`Error during run a html-minifier-terser at file ${file}:\n\n${err}`);
-      }
-      const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
-
-      fs.writeFile(file, minify, (err) => {
-        if (err) {
-          reject();
-          console.error(`Minify HTML error on write file:\n\n${err}`);
-        }
-        options.debug ? console.debug(file, `> reduced ${reduced}%.`) : '';
+        console.warn(`Leaving ${file} unchanged`);
         resolve();
-      });
+      }
     });
   });
+
   await Promise.all(minified);
 
   const minifyEnd = new Date().getTime();
