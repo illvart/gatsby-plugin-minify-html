@@ -24,10 +24,10 @@ const defaultOptions = {
 async function onPostBuild(args, pluginOptions = {}) {
   if (pluginOptions) {
     if (pluginOptions.debug && !isBoolean(pluginOptions.debug)) {
-      throw new Error('Minify HTML error, at plugin options `debug` value not type boolean false or true.');
+      throw new Error('Minify HTML error: `debug` must be a boolean.');
     }
     if (pluginOptions.config && !isObject(pluginOptions.config)) {
-      throw new Error('Minify HTML error, at plugin options `config` value not type object.');
+      throw new Error('Minify HTML error: `config` must be an object.');
     }
   }
   const options = deepMerge(defaultOptions, pluginOptions);
@@ -36,7 +36,7 @@ async function onPostBuild(args, pluginOptions = {}) {
   const files = await globAsync(pattern, {nodir: true});
 
   const minifyStart = new Date().getTime();
-  const minifyTotal = `Minify HTML files at public directory, total HTML files ${files.length}`;
+  const minifyTotal = `Minify HTML files in the public directory, total HTML files ${files.length}`;
   console.info(options.debug ? `${minifyTotal}:` : `${minifyTotal}.`);
 
   const minified = files.map(async (file) => {
@@ -46,14 +46,14 @@ async function onPostBuild(args, pluginOptions = {}) {
       try {
         minify = htmlMinifier.minify(String(data), options.config);
       } catch (err) {
-        console.warn(`Error during run a html-minifier-terser at file ${file}:\n\n${err}`);
+        console.error(`Minify HTML error: failed to run html-minifier-terser at file ${file}:\n\n${err}`);
       }
       const reduced = (((data.length - minify.length) / data.length) * 100).toFixed(2);
 
       fs.writeFile(file, minify, (err) => {
         if (err) {
+          console.error(`Minify HTML error: failed to write file:\n\n${err}`);
           reject();
-          console.error(`Minify HTML error on write file:\n\n${err}`);
         }
         options.debug ? console.debug(file, `> reduced ${reduced}%.`) : '';
         resolve();
@@ -63,7 +63,7 @@ async function onPostBuild(args, pluginOptions = {}) {
   await Promise.all(minified);
 
   const minifyEnd = new Date().getTime();
-  console.info(`Minify HTML files done in ${(minifyEnd - minifyStart) / 1000} sec`);
+  console.info(`Minify HTML files done in ${(minifyEnd - minifyStart) / 1000} seconds`);
 }
 
 exports.onPostBuild = onPostBuild;

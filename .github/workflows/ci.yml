@@ -1,0 +1,27 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'node'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn run format
+      - run: yarn run lint
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'ci: apply auto-fixes'
+          commit_options: '--no-verify'
+          commit_user_name: ${{ github.repository_owner }}
+          commit_user_email: ${{ github.repository_owner }}@users.noreply.github.com

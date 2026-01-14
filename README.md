@@ -1,15 +1,11 @@
 # gatsby-plugin-minify-html
 
-[![Travis](https://img.shields.io/travis/com/illvart/gatsby-plugin-minify-html?branch=master)](https://travis-ci.com/illvart/gatsby-plugin-minify-html)
+**A Gatsby plugin to minify HTML files**
+
+[![CI](https://github.com/illvart/gatsby-plugin-minify-html/workflows/CI/badge.svg)](https://github.com/illvart/gatsby-plugin-minify-html/actions/workflows/ci.yml)
+[![LICENSE](https://img.shields.io/github/license/illvart/gatsby-plugin-minify-html)](LICENSE)
 [![NPM version](https://img.shields.io/npm/v/gatsby-plugin-minify-html)](https://www.npmjs.org/package/gatsby-plugin-minify-html)
 [![Downloads](https://img.shields.io/npm/dt/gatsby-plugin-minify-html)](https://www.npmjs.com/package/gatsby-plugin-minify-html)
-[![Issues](https://img.shields.io/github/issues-raw/illvart/gatsby-plugin-minify-html)](https://github.com/illvart/gatsby-plugin-minify-html)
-
-> A Gatsby plugin for **minify HTML** files.
-
-With this plugin, you can minify each HTML files (`.html`) at `public` directory.
-
-_NOTE: This plugin only generates output when run in `production` mode! To test your minify HTML, run: `gatsby build && gatsby serve`._
 
 ## Table of Contents
 
@@ -17,6 +13,7 @@ _NOTE: This plugin only generates output when run in `production` mode! To test 
 - [Usage](#usage)
   - [Options](#options)
     - [Example](#example)
+- [Supports](#supports)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -28,7 +25,7 @@ Install with yarn:
 yarn add gatsby-plugin-minify-html
 ```
 
-Or install with npm:
+Or with npm:
 
 ```sh
 npm install --save gatsby-plugin-minify-html
@@ -36,7 +33,7 @@ npm install --save gatsby-plugin-minify-html
 
 ## Usage
 
-After installing `gatsby-plugin-minify-html` you can add it to the `plugins` array in your `gatsby-config.js` file:
+After installing `gatsby-plugin-minify-html`, add it to the `plugins` array in `gatsby-config.js`:
 
 ```js
 module.exports = {
@@ -44,8 +41,7 @@ module.exports = {
 };
 ```
 
-Note: if you are using `gatsby-plugin-brotli`, `gatsby-plugin-zopfli`, or other plugins look like used the **Gatsby Node APIs** [`onPostBuild`](https://www.gatsbyjs.org/docs/node-apis/#onPostBuild) make sure that it’s listed after this
-plugin:
+If you’re using `gatsby-plugin-brotli`, `gatsby-plugin-zopfli`, or other plugins that use the **Gatsby Node APIs** [onPostBuild](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#onPostBuild), make sure they are listed after this plugin:
 
 ```js
 // good
@@ -67,9 +63,9 @@ module.exports = {
 
 ### Options
 
-This plugin uses [`html-minifier-terser`](https://github.com/terser/html-minifier-terser), to use `html-minifier-terser` options put the options at `config: { }`.
+This plugin uses [html-minifier-terser](https://github.com/terser/html-minifier-terser). To customize options, add them to `config: { }`.
 
-You can see the options of `html-minifier-terser` are enabled default by this plugin in the [minify-html-plugin.js](https://github.com/illvart/gatsby-plugin-minify-html/blob/master/src/minify-html-plugin.js#L10):
+See the default options enabled by this plugin in [minify-html-plugin.js](src/minify-html-plugin.js#L10):
 
 |              Name               |   Type    | Default |                                             Description                                              |
 | :-----------------------------: | :-------: | :-----: | :--------------------------------------------------------------------------------------------------: |
@@ -80,7 +76,7 @@ You can see the options of `html-minifier-terser` are enabled default by this pl
 |  `removeScriptTypeAttributes`   | `Boolean` | `true`  |  Remove `type="text/javascript"` from `script` tags. Other `type` attribute values are left intact   |
 | `removeStyleLinkTypeAttributes` | `Boolean` | `true`  | Remove `type="text/css"` from `style` and `link` tags. Other `type` attribute values are left intact |
 
-See all options `html-minifier-terser` at [Options Quick Reference](https://github.com/terser/html-minifier-terser#options-quick-reference).
+See all `html-minifier-terser` options in the [Options Quick Reference](https://github.com/terser/html-minifier-terser#options-quick-reference).
 
 #### Example
 
@@ -111,19 +107,23 @@ module.exports = {
 };
 ```
 
-When option `debug: true` you can see a generate logs, example logs:
+When the option `debug: true`, you can see generated logs. Example logs:
 
 ```sh
-Minify HTML files at public directory, total HTML files 7:
+Minify HTML files in the public directory, total HTML files 7:
 public/404/index.html > reduced 0.20%.
 public/index.html > reduced 0.19%.
 ...
 ```
 
+## Supports
+
+If you’re enjoying it or want to support development, feel free to donate. Thank you! ❤️
+
 ## Contributing
 
-If you would like to help out with some code, check the [details](https://github.com/illvart/gatsby-plugin-minify-html/blob/master/docs/CONTRIBUTING.md).
+Want to contribute? Read the [Contributing](docs/CONTRIBUTING.md).
 
 ## License
 
-Licensed under [MIT](https://github.com/illvart/gatsby-plugin-minify-html/blob/master/LICENSE).
+Released under the [MIT License](LICENSE).
