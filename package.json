@@ -1,21 +1,13 @@
 {
   "name": "gatsby-plugin-minify-html",
-  "version": "1.0.4",
-  "description": "A Gatsby plugin for minify HTML files",
+  "version": "1.0.5",
+  "description": "A Gatsby plugin to minify HTML files",
   "main": "index.js",
-  "author": {
-    "name": "illvart",
-    "email": "illvart@protonmail.com",
-    "url": "https://twitter.com/illvart"
-  },
   "license": "MIT",
-  "homepage": "https://github.com/illvart/gatsby-plugin-minify-html#readme",
+  "homepage": "https://github.com/illvart/gatsby-plugin-minify-html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/illvart/gatsby-plugin-minify-html.git"
-  },
-  "bugs": {
-    "url": "https://github.com/illvart/gatsby-plugin-minify-html/issues"
   },
   "keywords": [
     "gatsby",
@@ -29,7 +21,8 @@
     "compress",
     "compressor",
     "optimize",
-    "optimizer"
+    "optimizer",
+    "terser"
   ],
   "scripts": {
     "format": "prettier --check \"./**/*.{js,json,yml}\" --write",
