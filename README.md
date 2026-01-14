@@ -5,7 +5,6 @@
 [![CI](https://github.com/illvart/gatsby-plugin-minify-html/workflows/CI/badge.svg)](https://github.com/illvart/gatsby-plugin-minify-html/actions/workflows/ci.yml)
 [![LICENSE](https://img.shields.io/github/license/illvart/gatsby-plugin-minify-html)](LICENSE)
 [![NPM version](https://img.shields.io/npm/v/gatsby-plugin-minify-html)](https://www.npmjs.org/package/gatsby-plugin-minify-html)
-[![Downloads](https://img.shields.io/npm/dt/gatsby-plugin-minify-html)](https://www.npmjs.com/package/gatsby-plugin-minify-html)
 
 ## Table of Contents
 
@@ -63,7 +62,7 @@ module.exports = {
 
 ### Options
 
-This plugin uses [html-minifier-terser](https://github.com/terser/html-minifier-terser). To customize options, add them to `config: { }`.
+This plugin uses [html-minifier-terser](https://github.com/terser/html-minifier-terser). To customize options, add to `config: { }`.
 
 See the default options enabled by this plugin in [minify-html-plugin.js](src/minify-html-plugin.js#L10):
 

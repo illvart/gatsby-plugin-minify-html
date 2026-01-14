@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 'node'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+      - run: yarn install
       - run: yarn run format
       - run: yarn run lint
       - uses: stefanzweifel/git-auto-commit-action@v7
